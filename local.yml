@@ -56,7 +56,7 @@ services:
       context: .
       dockerfile: ./compose/local/vite/Dockerfile
     image: my_awesome_vue_project_local_vite
-    container_name: my_awesome_vue_project_local_vite
+    container_name: my_awesome_vue_project_local_vite2
     depends_on:
       - django
     volumes:
