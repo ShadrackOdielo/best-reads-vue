@@ -5,3 +5,4 @@ POSTGRES_PORT=5432
 POSTGRES_DB=best_reads2
 POSTGRES_USER=debug
 POSTGRES_PASSWORD=debug
+DATABASE_URL=postgres://postgres:postgres@127.0.0.1:5432/best_reads2

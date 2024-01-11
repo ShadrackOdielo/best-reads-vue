@@ -1,15 +1,14 @@
-# best_reads_vue
+# bestreads
 
-A better goodreats clone
+Best reads is a book review site that allows users to search for books, leave reviews for individual books, and see the reviews made by other people. It also uses the a third-party API by Google books api, another book review website, to pull in ratings from a broader audience. Finally, users are able to query for book details and book reviews programmatically via the website’s API.
 
 [![Built with Cookiecutter Django](https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg?logo=cookiecutter)](https://github.com/cookiecutter/cookiecutter-django/)
 [![Black code style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 
 License: MIT
 
-## Settings
+##
 
-Moved to [settings](http://cookiecutter-django.readthedocs.io/en/latest/settings.html).
 
 ## Basic Commands
 ### Running the Vite Dev Server

@@ -1,0 +1,17 @@
+<!-- books/book_detail.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ book.title }}</h1>
+  <div>
+    <p>Author(s): {{ book.author }}</p>
+    <p>Published Date: {{ book.published_date }}</p>
+    <p>ISBN-10: {{ book.isbn_10 }}</p>
+    <!-- Add more details as needed -->
+  </div>
+  <div>
+    <p>Synopsis: {{ book.synopsis }}</p>
+    <!-- Add more details as needed -->
+  </div>
+  <a href="{% url 'books:book_list' %}">Back to Book List</a>
+{% endblock content %}

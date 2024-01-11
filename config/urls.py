@@ -9,6 +9,7 @@ from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
+    path("books/", include("books.urls", namespace="books")),
     path("about/", TemplateView.as_view(template_name="pages/about.html"), name="about"),
     path("rewards/", include("rewards.urls", namespace="rewards")),
     # Django Admin, use {% url 'admin:index' %}
@@ -17,6 +18,7 @@ urlpatterns = [
     path("users/", include("best_reads2.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
+    path("landing/", include("landing.urls", namespace="landing")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # API URLS

@@ -2,16 +2,16 @@
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
 import IconVue from "@/components/icons/IconVue.vue";
+
 </script>
 
 <template>
   <header>
-    <IconVue class="logo" width="125" height="125" />
+    <IconVue class="logo" width="250" height="250"/>
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <HelloWorld msg="Welcome to Bestreads"/>
       <hr style="height: 1rem;"/>
-      <div>For more Vue integration tips and techniques, check out <b>Vue Demo</b> from the navigation menu above.</div>
     </div>
   </header>
 

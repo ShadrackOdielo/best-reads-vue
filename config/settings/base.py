@@ -86,6 +86,9 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "best_reads2.users",
     "rewards.apps.RewardsConfig",
+    "landing.apps.LandingConfig",
+    "books.apps.BooksConfig",
+    "books.services",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -311,3 +314,4 @@ VUE_FRONTEND_STATIC_DIR = "vue"
 VUE_FRONTEND_USE_TYPESCRIPT = False
 # Your stuff...
 # ------------------------------------------------------------------------------
+DJANGO_READ_DOT_ENV_FILE = True

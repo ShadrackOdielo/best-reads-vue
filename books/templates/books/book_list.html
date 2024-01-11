@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Popular Books</h2>
+  {% for book in books.popular_books %}
+    {{ book.title }}
+    <!-- Add other book details as needed -->
+  {% endfor %}
+  <h2>Latest Books</h2>
+  {% for book in books.latest_books %}
+    {{ book.title }}
+    <!-- Add other book details as needed -->
+  {% endfor %}
+{% endblock content %}
