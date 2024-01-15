@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <h2>Search Results</h2>
+    <p>Showing results for: "{{ query }}"</p>
+    <p>Order By: {{ order_by|title }}</p>
+    <div class="row">
+      {% for book in books %}
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <img src="{{ book.volumeInfo.imageLinks.thumbnail }}"
+                 class="card-img-top"
+                 alt="{{ book.title }}" />
+            <div class="card-body">
+              <h5 class="card-title">{{ book.volumeInfo.title }}</h5>
+              <p class="card-text">{{ book.volumeInfo.description|truncatewords:20 }}</p>
+              {% with isbn=book.volumeInfo.industryIdentifiers.0.identifier %}
+                <a href="{% url 'books:book_detail' isbn %}" class="btn btn-primary">Details</a>
+              {% endwith %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock content %}

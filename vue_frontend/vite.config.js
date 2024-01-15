@@ -5,6 +5,7 @@ import vue from '@vitejs/plugin-vue'
 import {resolve} from 'path'
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 import {splitVendorChunkPlugin} from 'vite'
+import {viteCommonjs} from "@originjs/vite-plugin-commonjs";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -29,6 +30,7 @@ export default defineConfig({
     vue(),
     cssInjectedByJsPlugin({jsAssetsFilterFunction: () => true}),
     splitVendorChunkPlugin(),
+      viteCommonjs(),
   ],
   resolve: {
     alias: {

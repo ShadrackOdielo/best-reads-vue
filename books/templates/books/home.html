@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <h2>Search Books</h2>
+    <form method="get" action="{% url 'books:search_books' %}">
+      <div class="input-group mb-3">
+        <label>
+          <input type="text"
+                 class="form-control"
+                 placeholder="Search by title, author, or ISBN"
+                 name="query" />
+        </label>
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="submit">Search</button>
+        </div>
+      </div>
+    </form>
+    <h2>Order By</h2>
+    <div class="btn-group" role="group" aria-label="Order By">
+      <button type="button" class="btn btn-secondary">Relevance</button>
+      <button type="button" class="btn btn-secondary">Date Added</button>
+      <button type="button" class="btn btn-secondary">Popularity</button>
+    </div>
+    <h2>Latest Books</h2>
+    <div class="row">
+      {% for book in latest_books %}
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <img src="{{ book.volumeInfo.imageLinks.thumbnail }}"
+                 class="card-img-top"
+                 alt="{{ book.title }}" />
+            <div class="card-body">
+              <h5 class="card-title">{{ book.volumeInfo.title }}</h5>
+              <p class="card-text">{{ book.volumeInfo.description|truncatewords:20 }}</p>
+              <p>isbn: {{ book.volumeInfo.industryIdentifiers.0.identifier }}</p>
+              {% with isbn=book.volumeInfo.industryIdentifiers.0.identifier %}
+                <a href="{% url 'books:book_detail' isbn %}" class="btn btn-primary">Details</a>
+              {% endwith %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <a href="{% url 'books:latest_books' %}" class="btn btn-primary">View More</a>
+    <h2>Popular This Week (NYT Best Sellers)</h2>
+    <h2>popular books</h2>
+    <div class="row">
+      {% for book in popular_books %}
+        <div class="col-md-2">
+          <div class="card mb-4">
+            <img src="{{ book.book_image }}"
+                 class="card-img-top"
+                 alt="{{ book.title }}" />
+            <div class="card-body">
+              <h5 class="card-title">{{ book.title }}</h5>
+              <p class="card-text">{{ book.description|truncatewords:20 }}</p>
+              {% with isbn=book.primary_isbn10 %}
+                {#                            <a href="{% url 'books:book_detail' isbn %}" class="btn btn-primary">Details</a>#}
+              {% endwith %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <a href="{% url 'books:popular_books' %}" class="btn btn-primary">View More</a>
+    {% if user.is_authenticated %}
+      <h2>For You</h2>
+      <div class="row">
+        {% for book in personalized_books %}
+          <div class="col-md-4">
+            <div class="card mb-4">
+              <img src="{{ book.thumbnail_url }}"
+                   class="card-img-top"
+                   alt="{{ book.title }}" />
+              <div class="card-body">
+                <h5 class="card-title">{{ book.title }}</h5>
+                <p class="card-text">{{ book.description|truncatewords:20 }}</p>
+                {% with isbn=book.volumeInfo.industryIdentifiers.0.identifier %}
+                  {#                            <a href="{% url 'books:book_detail' isbn %}" class="btn btn-primary">Details</a>#}
+                {% endwith %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <a href="{% url 'books:for_you_books' %}" class="btn btn-primary">View More</a>
+    {% endif %}
+  </div>
+{% endblock content %}

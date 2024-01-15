@@ -1,17 +1,24 @@
-<!-- books/book_detail.html -->
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>{{ book.title }}</h1>
-  <div>
-    <p>Author(s): {{ book.author }}</p>
-    <p>Published Date: {{ book.published_date }}</p>
-    <p>ISBN-10: {{ book.isbn_10 }}</p>
-    <!-- Add more details as needed -->
+  <div class="container">
+    <a href="{% url 'books:home' %}" class="btn btn-primary">Back to Home</a>
+    <h1>{{ book.title }}</h1>
+    <div class="row">
+      <div class="col-md-4">
+        {% if book.imageLinks %}
+          <img src="{{ book.imageLinks.thumbnail }}" alt="{{ book.title }}" />
+        {% else %}
+          <p>No Image Available</p>
+        {% endif %}
+      </div>
+      <div class="col-md-8">
+        <p>Authors: {{ book.authors|default:"N/A" }}</p>
+        <p>Published Date: {{ book.publishedDate|default:"N/A" }}</p>
+        <p>Categories: {{ book.categories|default:"N/A" }}</p>
+        <p>Description: {{ book.description|default:"N/A" }}</p>
+        <!-- Add more details as needed -->
+      </div>
+    </div>
   </div>
-  <div>
-    <p>Synopsis: {{ book.synopsis }}</p>
-    <!-- Add more details as needed -->
-  </div>
-  <a href="{% url 'books:book_list' %}">Back to Book List</a>
 {% endblock content %}

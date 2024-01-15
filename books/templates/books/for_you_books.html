@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>For You</h2>
+  <div class="row">
+    {% for book in personalized_books %}
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img src="{{ book.thumbnail_url }}"
+               class="card-img-top"
+               alt="{{ book.title }}" />
+          <div class="card-body">
+            <h5 class="card-title">{{ book.title }}</h5>
+            <p class="card-text">{{ book.description|truncatewords:20 }}</p>
+            {% with isbn=book.volumeInfo.industry_identifiers.0.identifier %}
+              {#                            <a href="{% url 'books:book_detail' isbn %}" class="btn btn-primary">Details</a>#}
+            {% endwith %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock content %}

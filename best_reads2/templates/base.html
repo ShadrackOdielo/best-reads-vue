@@ -6,13 +6,15 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <title>
       {% block title %}
         best-reads
       {% endblock title %}
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="A better goodreats clone" />
+    <meta name="description" content="A better goodreads clone" />
     <meta name="author" content="Shadrack Odielo" />
     <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}" />
     {% block css %}
@@ -61,7 +63,7 @@
                 <a class="nav-link" href="{% url 'home' %}">Home <span class="visually-hidden">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-success fw-bold" href="{% url 'rewards:list' %}">books</a>
+                <a class="nav-link text-success fw-bold" href="{% url 'books:home' %}">books</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'about' %}">About</a>

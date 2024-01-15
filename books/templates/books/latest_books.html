@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Latest Books</h2>
+  <
+  <h2>Latest Books</h2>
+  <div class="row">
+    {% for book in latest_books %}
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img src="{{ book.volumeInfo.imageLinks.thumbnail }}"
+               class="card-img-top"
+               alt="{{ book.title }}" />
+          <div class="card-body">
+            <h5 class="card-title">{{ book.volumeInfo.title }}</h5>
+            <p class="card-text">{{ book.volumeInfo.description|truncatewords:20 }}</p>
+            <p>isbn: {{ book.volumeInfo.industryIdentifiers.0.identifier }}</p>
+            {% with isbn=book.volumeInfo.industryIdentifiers.0.identifier %}
+              <a href="{% url 'books:book_detail' book.volumeInfo.industryIdentifiers.0.identifier %}"
+                 class="btn btn-primary">Details</a>
+            {% endwith %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock content %}
+```

@@ -5,8 +5,8 @@ import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import {convertDatasetToProps} from 'vue-plugin-django-utils'
 
 import LandingPage from "@/components/LandingPage.vue";
-import ContactsSection from "@/components/ContactsSection.vue";
-import AboutMeSection from "@/components/AboutMeSection.vue";
+import ContactsSection from "@/components/BookItem.vue";
+import AboutMeSection from "@/components/BookList.vue";
 import DescriptionSection from "@/components/DescriptionSection.vue";
 import HomeSection from "@/components/HomeSection.vue";
 

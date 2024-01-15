@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="jumbotron">
+    <h1>Welcome to BestReads!</h1>
+    <p>
+      Your go-to platform for discovering and exploring a world of books.
+      Join our community and embark on a literary journey!
+    </p>
+    <p>
+      <a class="btn btn-primary btn-lg" href="{% url 'home' %}" role="button">Browse Books</a>
+    </p>
+  </div>
+{% endblock content %}

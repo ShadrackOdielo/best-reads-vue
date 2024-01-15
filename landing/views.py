@@ -1,17 +1,9 @@
 from django.shortcuts import render
+from django.views import View
 
 
-def home(request):
-    return render(request, "landing/home.html")
-
-
-def description(request):
-    return render(request, "landing/description.html")
-
-
-def about_me(request):
-    return render(request, "landing/about_me.html")
-
-
-def contacts(request):
-    return render(request, "landing/contacts.html")
+class LandingPageView(View):
+    def get(self, request):
+        # Implement logic to fetch latest, popular, and recommended books
+        # Use Google Books API for book details
+        return render(request, "landing_page.html")
