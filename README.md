@@ -7,47 +7,39 @@ Best reads is a book review site that allows users to search for books, leave re
 
 License: MIT
 
-##
+## Api Endpoints
+(currently only supports GET requests)
+- /api/books
+- /api/books/<isbn>
+- /api/books/<isbn>/reviews
+- /api/books/<isbn>/reviews/<review_id>(incomplete)
+- /api/books/<isbn>/reviews/<review_id>/comments(incomplete)
+- /api/books/<isbn>/reviews/<review_id>/comments/<comment_id>(incomplete)
 
 
 ## Basic Commands
-### Running the Vite Dev Server
+### Running the Server
 
-This app integrates with a Vue frontend located in `vue_frontend`.
+this app uses docker for development and deployment, so you will need to install docker and docker-compose
 ##### With Docker
-The Vite dev server will automatically run in docker when started with the local.yml configuration.
 ```sh
 docker-compose -f local.yml up
 ```
-
-
-##### With PyCharm
-The Vite dev server may be run on the host from PyCharm using the pre-built run configurations.  First, ensure that
-PyCharm project's Node interpreter is properly set (Languages & Frameworks -> Node.js), then run the run
-configuration named ```npm install```.  After that, run the configuration named `vite dev` to launch Vite dev server.
-
-
-##### From the console
-Alternatively you, may run the Vite dev server directly from the project directory:
+to run django commands, you will need to run them in the docker container
 ```sh
-cd vue_frontend
-npm install
-npm run dev
-````
+docker-compose -f local.yml run --rm django python manage.py <command>
+```
+##### Without Docker
+not currently fully supported, I disabled it for later development
+`
+
+
+
 
 For more information, refer to the [Vue3 Vite Django Cookiecutter project](https://github.com/ilikerobots/cookiecutter-vue-django).
 
 
 
-### Setting Up Your Users
-
-- To create a **normal user account**, just go to Sign Up and fill out the form. Once you submit it, you'll see a "Verify Your E-mail Address" page. Go to your console to see a simulated email verification message. Copy the link into your browser. Now the user's email should be verified and ready to go.
-
-- To create a **superuser account**, use this command:
-
-      $ python manage.py createsuperuser
-
-For convenience, you can keep your normal user logged in on Chrome and your superuser logged in on Firefox (or similar), so that you can see how the site behaves for both kinds of users.
 
 ### Type checks
 
@@ -68,8 +60,7 @@ To run the tests, check your test coverage, and generate an HTML coverage report
     $ pytest
 
 ### Live reloading and Sass CSS compilation
-
-Moved to [Live reloading and SASS compilation](https://cookiecutter-django.readthedocs.io/en/latest/developing-locally.html#sass-compilation-live-reloading).
+the app uses bootstrap 5 for styling, and uses sass for css compilation
 
 ## Deployment
 
@@ -98,3 +89,18 @@ For more information, refer to the [Vue3 Vite Django Cookiecutter project](https
 ### Docker
 
 See detailed [cookiecutter-django Docker documentation](http://cookiecutter-django.readthedocs.io/en/latest/deployment-with-docker.html).
+
+### Authored by
+- shadrack odielo
+
+### Tools used
+- [cookiecutter-django]()
+- [cookiecutter-vue-django]()
+- docker
+- vue 3
+- vite
+- python
+- django
+- postgresql
+- google books api
+- nyt books api
