@@ -1,0 +1,29 @@
+<!-- book_card.html -->
+<div class="col-md-2">
+  {% if book.book_image == None and book.title == None %}
+    {% if book.volumeInfo.industryIdentifiers.0 %}
+      <a href="{% url 'books:book_detail' book.volumeInfo.industryIdentifiers.0.identifier %}">
+      {% else %}
+        <a href="{% url 'books:book_detail' 12345678 %}">
+        {% endif %}
+        <img src="{{ book.volumeInfo.imageLinks.thumbnail }} "
+             class="card-img-top"
+             alt="{{ book.title }}" />
+      </a></a>
+      <div class="card-body">
+        <h5 class="card-title">{{ book.volumeInfo.title }}</h5>
+        <p class="card-text">{{ book.volumeInfo.authors.0 }}</p>
+      </div>
+    {% else %}
+      <a href="{% url 'books:book_detail' book.primary_isbn13 %}">
+        <img src="{{ book.book_image }} "
+             class="card-img-top"
+             alt="{{ book.title }}" />
+      </a>
+      <div class="card-body">
+        <h5 class="card-title">{{ book.title }}</h5>
+        <p class="card-text">{{ book.author }}</p>
+      </div>
+    {% endif %}
+  </div>
+  <!-- Modal -->

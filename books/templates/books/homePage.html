@@ -1,0 +1,46 @@
+<!-- homepage.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <h2>Best Sellers This Week</h2>
+    <div class="row">
+      {% for book in popular_books %}
+        {% include 'book_card.html' with book=book %}
+      {% endfor %}
+    </div>
+    <h2>Latest</h2>
+    <div class="row">
+      {% for book in latest_books %}
+        {% include 'book_card.html' with book=book %}
+      {% endfor %}
+    </div>
+    <h2>Classic Works</h2>
+    <div class="row">
+      {% for book in personalized_books %}
+        {% include 'book_card.html' with book=book %}
+      {% endfor %}
+    </div>
+  </div>
+  <script>
+    /* When the user clicks on the button,
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+  </script>
+{% endblock content %}

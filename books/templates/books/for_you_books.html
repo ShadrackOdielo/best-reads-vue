@@ -6,14 +6,15 @@
     {% for book in personalized_books %}
       <div class="col-md-4">
         <div class="card mb-4">
-          <img src="{{ book.thumbnail_url }}"
+          <img src="{{ book.volumeInfo.imageLinks.thumbnail }}"
                class="card-img-top"
-               alt="{{ book.title }}" />
+               alt="{{ book.volumeInfo.title }}" />
           <div class="card-body">
-            <h5 class="card-title">{{ book.title }}</h5>
+            <h5 class="card-title">{{ book.volumeInfo.title }}</h5>
             <p class="card-text">{{ book.description|truncatewords:20 }}</p>
-            {% with isbn=book.volumeInfo.industry_identifiers.0.identifier %}
-              {#                            <a href="{% url 'books:book_detail' isbn %}" class="btn btn-primary">Details</a>#}
+            {% with isbn=book.volumeInfo.industryIdentifiers.0.identifier %}
+              <a href="{% url 'books:book_detail' book.volumeInfo.industryIdentifiers.0.identifier %}"
+                 class="btn btn-primary">Details</a>
             {% endwith %}
           </div>
         </div>
